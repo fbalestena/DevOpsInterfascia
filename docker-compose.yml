@@ -3,7 +3,7 @@ name: interfascia-frontend
 services:
   frontend:
     build:
-      context: ./frontend
+      context: ./Frontend
       dockerfile: Dockerfile
 
     container_name: interfascia-frontend
