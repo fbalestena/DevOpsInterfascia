@@ -1,19 +1,18 @@
 # =============================================================================
-# Interfascia - Frontend Minimalista (Solo Nginx sirviendo un index.html)
+# Interfascia - Frontend Minimalista
 # =============================================================================
 
-# 1. Usamos directamente la imagen ligera de Nginx
-FROM nginx:1.27-alpine
+# Imagen base liviana de Python
+FROM python:3.12-alpine
 
-# 2. Copiamos nuestro archivo index.html directamente a la carpeta que Nginx sirve por defecto
-COPY index.html /usr/share/nginx/html/index.html
+# Directorio de trabajo
+WORKDIR /app
 
-# 3. (Opcional) Si quieres usar tu propia configuración de Nginx, descomenta esta línea:
-# COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copiamos el frontend
+COPY index.html .
 
-# 4. Exponemos el puerto 80
-EXPOSE 80
+# Exponemos el puerto del servidor HTTP
+EXPOSE 3000
 
-# 5. Mantenemos el healthcheck para saber que el contenedor está vivo
-HEALTHCHECK --interval=10s --timeout=3s --retries=10 --start-period=5s \
-  CMD wget -qO- http://127.0.0.1/ || exit 1
+# Servimos el index.html mediante el servidor HTTP de Python
+CMD ["python", "-m", "http.server", "3000"]

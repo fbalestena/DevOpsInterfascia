@@ -1,11 +1,31 @@
-name: interfascia-frontend
+name: interfascia
 
 services:
+
   frontend:
     build:
-      context: ./frontend
+      context: ./Frontend
       dockerfile: Dockerfile
+
     container_name: interfascia-frontend
+
     restart: unless-stopped
+
     ports:
-      - "3000:80"
+      - "3000:3000"
+
+    depends_on:
+      - backend
+
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+
+    container_name: interfascia-backend
+
+    restart: unless-stopped
+
+    ports:
+      - "8000:80"
