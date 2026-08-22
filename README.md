@@ -151,6 +151,7 @@ El proyecto utiliza GitHub Actions para automatizar las validaciones del código
 
 Actualmente el pipeline realiza:
 
+```
 Push / Pull Request
         │
         ▼
@@ -168,6 +169,7 @@ GitHub Actions
         │
         └── Docker
               └── Docker Compose build
+```
 
 El pipeline permite detectar errores antes de realizar un despliegue.
 
