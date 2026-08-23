@@ -49,12 +49,5 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
 
-  sonarqube:
-    image: sonarqube:community
-    container_name: interfascia-sonarqube
-    restart: unless-stopped
-    ports:
-      - "9000:9000"
-
 volumes:
   postgres_data:
