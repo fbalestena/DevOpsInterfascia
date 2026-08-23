@@ -12,6 +12,19 @@ on:
 
 jobs:
 
+  sonarqube:
+    name: Análisis SonarQube
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ejecutar análisis SonarQube
+        run: sonar-scanner-npm -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=Interfascia
+
   frontend:
     name: Build Frontend
     runs-on: ubuntu-latest
