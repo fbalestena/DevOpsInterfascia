@@ -13,7 +13,7 @@ on:
 jobs:
 
   sonarqube:
-    name: Análisis SonarQube
+    name: Analisis SonarQube
     runs-on: self-hosted
 
     steps:
@@ -23,7 +23,7 @@ jobs:
           fetch-depth: 0
 
       - name: Ejecutar análisis SonarQube
-        run: sonar-scanner-npm -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=Interfascia
+        run: sonar-scanner -Dsonar.host.url=${{ secrets.SONAR_HOST_URL }} -Dsonar.token=${{ secrets.SONAR_TOKEN }} -Dsonar.projectKey=Interfascia
 
   frontend:
     name: Build Frontend
