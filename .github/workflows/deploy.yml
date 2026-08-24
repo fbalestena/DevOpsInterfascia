@@ -25,6 +25,28 @@ jobs:
       - name: Ejecutar análisis SonarQube
         run: |
           sonar-scanner "-Dsonar.host.url=${{ secrets.SONAR_HOST_URL }}" "-Dsonar.token=${{ secrets.SONAR_TOKEN }}" "-Dsonar.projectKey=Interfascia"
+
+  docker-trivy:
+    name: Build y análisis de vulnerabilidades
+    runs-on: self-hosted
+    needs: sonarqube
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Build Backend
+        run: docker build -t interfascia-backend:latest ./Backend
+
+      - name: Build Frontend
+        run: docker build -t interfascia-frontend:latest ./Frontend
+
+      - name: Trivy - Backend
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 interfascia-backend:latest
+
+      - name: Trivy - Frontend
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 interfascia-frontend:latest
+
   frontend:
     name: Build Frontend
     runs-on: ubuntu-latest
