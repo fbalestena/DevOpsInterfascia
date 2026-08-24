@@ -42,7 +42,7 @@ jobs:
         run: docker build -t interfascia-frontend:latest ./Frontend
 
       - name: Trivy - Backend
-        run: trivy image  --severity CRITICAL --ignore-unfixed --exit-code 1interfascia-backend:latest
+        run: trivy image  --severity CRITICAL --ignore-unfixed --exit-code 1 interfascia-backend:latest
         
       - name: Trivy - Frontend
         run: trivy image --severity CRITICAL --ignore-unfixed --exit-code 1 interfascia-frontend:latest
