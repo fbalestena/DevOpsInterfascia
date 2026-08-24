@@ -142,12 +142,12 @@ Ver los logs:
 docker compose logs
 ```
 Detener los servicios:
-```text 
+```text   
 docker compose down
 ```
 ## Integración Continua
 
-El proyecto utiliza GitHub Actions para automatizar las validaciones del código.
+El proyecto utiliza GitHub Actions para automatizar las validaciones del código
 
 Actualmente el pipeline realiza:
 
