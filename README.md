@@ -142,7 +142,7 @@ Ver los logs:
 docker compose logs
 ```
 Detener los servicios:
-```text
+```text 
 docker compose down
 ```
 ## Integración Continua
